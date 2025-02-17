@@ -1,2 +1,5 @@
 /venv
 /clean_data.csv
+
+# Ignorer les fichiers de données brutes gérés par DVC
+data/raw/raw.csv
