@@ -1,20 +1,33 @@
-# Examen DVC et Dagshub
-Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la solution de l'examen. 
+# Examen DVC - DataScientest
 
-```bash       
-├── examen_dvc          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw       
-│   ├── metrics       
-│   ├── models      
-│   │   ├── data      
-│   │   └── models        
-│   ├── src       
-│   └── README.md.py       
-```
-N'hésitez pas à rajouter les dossiers ou les fichiers qui vous semblent pertinents.
+**Nom et Prénom** : Anas Mbarki  
+**Email** : anasmbarki.amk@gmail.com  
+**Lien vers le dépôt DagsHub** : [https://dagshub.com/AnasMba19/examen-dvc]
 
-Vous devez dans un premier temps *Fork* le repo et puis le cloner pour travailler dessus. Le rendu de cet examen sera le lien vers votre dépôt sur DagsHub. Faites attention à bien mettre https://dagshub.com/licence.pedago en tant que colaborateur avec des droits de lecture seulement pour que ce soit corrigé.
+## Description du projet
+Ce projet met en place un pipeline DVC permettant de gérer un workflow de machine learning structuré et automatisé. Il comprend les étapes suivantes :
+- **Prétraitement des données** : Séparation en jeu d'entraînement et de test, normalisation
+- **Optimisation des hyperparamètres** : Recherche des meilleurs paramètres via GridSearchCV
+- **Entraînement du modèle** : Modèle RandomForestRegressor entraîné sur les données traitées
+- **Évaluation du modèle** : Calcul des métriques de performance (MSE, R²)
+- **Gestion des données et du modèle avec DVC et DagsHub**
 
-Vous pouvez télécharger les données à travers le lien suivant : https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv.
+## Structure du projet
+Le projet est organisé comme suit :
+- **`src/data/`** : Scripts de prétraitement des données (`split_data.py`, `normalize_data.py`)
+- **`src/models/`** : Scripts d'entraînement et d'évaluation du modèle (`gridsearch_model.py`, `train_model.py`, `evaluate_model.py`)
+- **`data/`** : Données brutes et transformées
+- **`models/`** : Modèle entraîné (`model.pkl`)
+- **`metrics/`** : Résultats des métriques (`metrics.json`)
+- **`dvc.yaml`** : Définition du pipeline DVC
+- **`dvc.lock`** : Fichier de verrouillage DVC pour garantir la reproductibilité
+
+---
+
+## Instructions d'exécution
+Pour exécuter le pipeline DVC sur un nouvel environnement, suivez les étapes suivantes :
+
+```bash
+git clone https://github.com/AnasMba19/examen-dvc.git
+cd examen-dvc
+dvc repro
